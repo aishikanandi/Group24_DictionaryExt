@@ -54,4 +54,36 @@ async function dictionary(query) {
   }
 }
 
+document.getElementById("prev").addEventListener("click", handlePrevious);
+document.getElementById("next").addEventListener("click", handleNext);
 
+function handlePrevious() {
+  index = index - 1;
+  if (index < 0) index = indlimit - 1;
+  setValues();
+}
+
+function handleNext() {
+  index = index + 1;
+  if (index >= indlimit) index = 0;
+  setValues();
+}
+
+function setValues() {
+  pos = wordef[0].meanings[index].partOfSpeech;
+  defin = wordef[0].meanings[index].definitions[0].definition;
+  example = wordef[0].meanings[index].definitions[0].example
+    ? wordef[0].meanings[index].definitions[0].example
+    : null;
+
+  document.getElementById(
+    "word"
+  ).innerHTML = `${word} <a href=${sourceurl} class="searchanchor" target="_blank"><img class="searchsvg" title="read more" src = "../assets/searchonweb.svg" alt="read more"/><a>`;
+  document.getElementById("phonetic").innerHTML = `${phonetic}  (${pos})`;
+  document.getElementById("definition").innerHTML = defin;
+  if (example) {
+    document.getElementById("example").innerHTML = `Example: ${example}`;
+  } else {
+    document.getElementById("example").innerHTML = "";
+  }
+}
