@@ -20,3 +20,38 @@ function gotTabs(tabs) {
     }
   });
 }
+
+let wordef,
+  word,
+  phonetic,
+  pos,
+  defin,
+  example,
+  sourceurl,
+  index = 0,
+  indlimit;
+
+async function dictionary(query) {
+  let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${query}`;
+  let response = await fetch(url);
+  wordef = await response.json();
+  if (wordef && !wordef.title) {
+    indlimit = wordef[0].meanings.length;
+    word = wordef[0].word;
+    phonetic = wordef[0].phonetic ? wordef[0].phonetic : "";
+    sourceurl = `https://en.wiktionary.org/wiki/${word}`;
+    index = 0;
+
+    setValues();
+
+    if (indlimit > 1) {
+      document
+        .getElementById("navigatecontainer")
+        .classList.remove("hidenavigator");
+    }
+  } else if (wordef.title) {
+    document.getElementById("error").innerHTML = "⚠  " + wordef.title;
+  }
+}
+
+

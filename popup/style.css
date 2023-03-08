@@ -39,3 +39,46 @@ body {
   #definition{
     padding-bottom: 3%;
   }
+  
+  .navigate-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background-image: linear-gradient(to right, #00b09b, #96c93d);
+}
+
+.navigator {
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 14px;
+}
+
+.hidenavigator {
+  display: none;
+}
+
+.navigator:hover {
+  cursor: pointer;
+}
+
+.searchsvg {
+  width: 17px;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.searchanchor {
+  text-decoration: none;
+  outline: none;
+}
+
+.searchanchor:hover {
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
