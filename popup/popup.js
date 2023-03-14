@@ -1,5 +1,10 @@
 let query = { active: true, currentWindow: true };
 
+var synth = window.speechSynthesis;
+var voices = [];
+var btnSpeak = document.querySelector('#btnSpeak');
+var toSpeak= '';
+
 chrome.tabs.query(query, gotTabs);
 function gotTabs(tabs) {
   let msg = {
@@ -34,6 +39,7 @@ let wordef,
 async function dictionary(query) {
   let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${query}`;
   let response = await fetch(url);
+  toSpeak = new SpeechSynthesisUtterance(query);
   wordef = await response.json();
   if (wordef && !wordef.title) {
     indlimit = wordef[0].meanings.length;
@@ -41,9 +47,10 @@ async function dictionary(query) {
     phonetic = wordef[0].phonetic ? wordef[0].phonetic : "";
     sourceurl = `https://en.wiktionary.org/wiki/${word}`;
     index = 0;
-
+    
+    voices = synth.getVoices();
     setValues();
-
+    btnSpeak.classList.remove("hideSpeaker");
     if (indlimit > 1) {
       document
         .getElementById("navigatecontainer")
@@ -53,6 +60,15 @@ async function dictionary(query) {
     document.getElementById("error").innerHTML = "⚠  " + wordef.title;
   }
 }
+btnSpeak.addEventListener('click', ()=> {
+  var selectedVoiceName = 'Alex'
+  voices.forEach((voice)=>{
+      if(voice.name == selectedVoiceName){
+          toSpeak.voice = voice;
+      }
+  });
+  synth.speak(toSpeak);
+});
 
 document.getElementById("prev").addEventListener("click", handlePrevious);
 document.getElementById("next").addEventListener("click", handleNext);
