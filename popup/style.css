@@ -1,7 +1,8 @@
 body {
     min-width: 300px;
     text-align: center;
-    background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+    background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+
   }
   
   h2 {
@@ -38,14 +39,14 @@ body {
   
   #definition{
     padding-bottom: 3%;
-<<<<<<< HEAD
   }
   
   .navigate-container {
   display: flex;
   justify-content: space-between;
   text-align: center;
-  background-image: linear-gradient(to right, #00b09b, #96c93d);
+  background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+
 }
 
 .navigator {
@@ -83,6 +84,3 @@ body {
   border: none;
 }
 
-=======
-  }
->>>>>>> origin/UI
