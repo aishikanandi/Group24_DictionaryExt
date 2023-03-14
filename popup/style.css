@@ -1,7 +1,7 @@
 body {
     min-width: 300px;
     text-align: center;
-    background-image: linear-gradient(to right, #00b09b, #96c93d);
+    background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
   }
   
   h2 {
@@ -38,6 +38,7 @@ body {
   
   #definition{
     padding-bottom: 3%;
+<<<<<<< HEAD
   }
   
   .navigate-container {
@@ -82,3 +83,6 @@ body {
   border: none;
 }
 
+=======
+  }
+>>>>>>> origin/UI
